@@ -20,11 +20,17 @@
     width: 100%;
 }
 
+/* Make sure normal text content does not stretch */
+.markdown-section {
+    max-width: 800px;
+    width: 100%;
+}
+
 /* Adjust wide-graph width properly */
 .wide-graph {
-    width: 90vw !important; /* Limits width to 90% of viewport */
-    max-width: 1400px !important; /* Prevents it from going too wide */
-    margin-left: calc(-45vw + 50%) !important; /* Centers it properly */
+    width: 80vw !important; /* Limits width to 90% of viewport */
+    max-width: 1100px !important; /* Prevents it from going too wide */
+    margin-left: calc(-40vw + 50%) !important; /* Centers it properly */
 }
 
 /* Prevent parent constraints */
@@ -41,7 +47,7 @@
     position: fixed;
     left: 0;
     top: 0;
-    width: 250px; /* Sidebar width */
+    width: 300px; /* Sidebar width */
     height: 100%;
     background: #fff;
     z-index: 1000;
@@ -49,8 +55,8 @@
 
 /* Ensure content area remains in the right space */
 .book-body {
-    margin-left: 250px; /* Matches sidebar width */
-    max-width: calc(100% - 250px); /* Prevents squeezing */
+    margin-left: 300px; /* Matches sidebar width */
+    max-width: calc(100% - 300px); /* Prevents squeezing */
     padding-right: 20px;
 }
 
