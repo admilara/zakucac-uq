@@ -64,7 +64,7 @@
 
 /* Adjust only when sidebar is open */
 .book.with-summary .page-inner {
-    margin-left: 250px; /* Adjust based on sidebar width */
+    margin-left: 0px; /* Adjust based on sidebar width */
 }
 
 /* When ToC is hidden, expand to full width */
