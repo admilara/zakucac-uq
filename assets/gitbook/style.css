@@ -39,6 +39,7 @@
     height: 800px;
     border: none;
     display: block; /* Ensure no extra spacing */
+    overflow: hidden; /* Prevents internal scrolling */
 }
 
 /* Prevent parent constraints */
@@ -93,3 +94,4 @@ table {
         max-width: 100%;
     }
 }
+
