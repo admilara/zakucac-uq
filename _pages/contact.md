@@ -1,9 +1,9 @@
 ---
-title: Contact
-author: Tao He
-date: 2022-02-05
-category: Jekyll
+title: kontakt
+author: admilara
+date: 2025-03
+category: UQ regulacija
 layout: post
 ---
 
-This is an contact page.
+Kontakt na lara.buljan@ie-zagreb.hr
