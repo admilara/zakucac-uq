@@ -12,7 +12,15 @@
 .page-inner {
     max-width: 800px;
     margin: 0 auto;
+    width: 100%;
 }
+
+/* Keep normal content centered */
+.page-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
 
 /* Make sure .wide-graph is the only element that expands */
 .wide-graph {
@@ -45,6 +53,7 @@
 .book-body {
     margin-left: 300px; /* Matches sidebar width */
     max-width: calc(100% - 300px); /* Ensures full width minus sidebar */
+    padding-right: 20px;
 }
 
 /* Ensure tables and text don’t overflow */
