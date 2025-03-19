@@ -12,8 +12,8 @@
 /* Make only the graph wider while respecting content area */
 .markdown-section .wide-graph {
     position: relative;
-    width: calc(100% - 250px); /* Subtracts ToC width */
-    max-width: calc(100% - 250px);
+    width: 100%; /* Takes full width of `.page-inner` */
+    max-width: 100%;
     margin-left: auto;
     margin-right: auto;
     transition: width 0.3s ease;
@@ -29,8 +29,12 @@
 
 /* Responsive handling for smaller screens */
 @media screen and (max-width: 1024px) {
+    .book.with-summary .page-inner {
+        max-width: 100%; /* Allows full width on smaller screens */
+    }
+
     .markdown-section .wide-graph {
-        width: 100%; /* Use full width when sidebar is hidden */
+        width: 100%;
     }
 }
 
@@ -41,14 +45,14 @@
     }
 }
 
-/* Ensure page-inner expands only when needed */
 .page-inner {
-    max-width: 800px; /* Keeps normal content constrained */
+    max-width: 100%;
     margin: 0 auto;
-    transition: margin-left 0.3s ease;
+    transition: margin-left 0.3s ease-in-out, max-width 0.3s ease-in-out;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0 20px; /* Ensures some spacing on both sides */
 }
 
 .page-wide .page-inner {
@@ -64,11 +68,11 @@
 
 /* Adjust only when sidebar is open */
 .book.with-summary .page-inner {
-    margin-left: 0px; /* Adjust based on sidebar width */
+    max-width: calc(100vw - 320px); /* Shrinks to allow space for sidebar */
 }
 
 /* When ToC is hidden, expand to full width */
-.book.without-summary .markdown-section .wide-graph {
-    width: 100%;
-    max-width: 100%;
+.book.with-summary .markdown-section .wide-graph {
+    width: calc(100vw - 320px); /* Adjusts to fit within available space */
 }
+
