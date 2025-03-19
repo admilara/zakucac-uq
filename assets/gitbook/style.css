@@ -28,9 +28,17 @@
 
 /* Ensure .wide-graph is wider than content but not too wide */
 .wide-graph {
+    position: relative;
     width: 80vw !important;  /* Set width to 80% of the viewport */
     max-width: 1100px !important; /* Limit maximum width */
     margin-left: calc(-40vw + 50%) !important; /* Center it properly */
+}
+
+.wide-graph iframe {
+    width: 100%;
+    height: 800px;
+    border: none;
+    display: block; /* Ensure no extra spacing */
 }
 
 /* Prevent parent constraints */
