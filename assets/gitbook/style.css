@@ -16,8 +16,13 @@
   /* Position it so that it breaks out of its parent container */
   position: relative;
   left: 50%;
-  margin-left: -50vw;
+  margin-left: calc((100% - 100vw) / 2);
   
   /* Optional: add horizontal scrolling if content still overflows */
   overflow-x: auto;
+}
+
+.page-inner {
+  max-width: 960px;
+  margin: 0 auto;
 }
