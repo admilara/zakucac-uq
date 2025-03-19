@@ -1,7 +1,7 @@
 ---
 title: KONČAR INEM - WATCH GEN A
 author: admilara
-date: 2025-03
+date: 2025-03-19
 category: UQ regulacija
 layout: post
 ---
