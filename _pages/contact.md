@@ -1,5 +1,5 @@
 ---
-title: Kontakt
+title: kontakt
 author: admilara
 date: 2025-03-19
 category: UQ regulacija
