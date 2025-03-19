@@ -1,5 +1,5 @@
 ---
-title: KONČAR INEM - WATCH GEN A
+title: GEN A - Watch 001
 author: admilara
 date: 2025-03-19
 category: UQ regulacija
