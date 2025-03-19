@@ -59,7 +59,32 @@
     overflow: visible !important; /* Allow full width elements */
 }
 
+
+/* Default page-inner styling remains unless there's a wide-graph */
 .page-inner {
+    max-width: 800px; /* Keeps normal content constrained */
+    margin: 0 auto;
+}
+
+/* When a .wide-graph exists, override width constraints */
+.page-inner:has(.wide-graph) {
     max-width: none !important;
     width: 100% !important;
+}
+
+/* Ensure .wide-graph itself is full width */
+.markdown-section .wide-graph {
+    position: relative;
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+}
+
+/* Fix for Plotly iframes */
+.markdown-section .wide-graph iframe {
+    width: 100%;
+    height: 800px;
+    border: none;
+    display: block;
 }
