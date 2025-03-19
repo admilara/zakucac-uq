@@ -14,17 +14,11 @@
 }
  
 .wide-graph {
-  /* Force container to be as wide as the viewport */
   width: 100vw;
-  /* Pull the element out of its parent's constrained flow */
   position: relative;
   left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  /* Ensure it handles overflowing content gracefully */
+  transform: translateX(-50%);
   overflow-x: auto;
-  /* Optional: if needed, add padding so content doesn't stick to the viewport edge */
   padding: 0 20px;
   box-sizing: border-box;
 }
