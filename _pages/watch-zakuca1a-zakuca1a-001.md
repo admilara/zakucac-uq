@@ -40,7 +40,8 @@ table {
 | **UFACT** | [V] | Napon uzbude |
 
 {% endraw %}
-
-<div class="wide-graph">
-    <iframe src="{{ site.baseurl }}/watch-htmls-a/watch-zakuca1a-zakuca1a-001.html" width="100%" height="800px" frameborder="0"></iframe>
+<div class="wide-graph-container">
+    <div class="wide-graph">
+        <iframe src="{{ site.baseurl }}/watch-htmls-a/watch-zakuca1a-zakuca1a-001.html" width="100%" height="800px" frameborder="0"></iframe>
+    </div>
 </div>
