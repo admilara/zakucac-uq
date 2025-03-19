@@ -29,9 +29,9 @@
 /* Adjust wide-graph width properly */
 .wide-graph {
     position: relative;
-    width: 80vw !important; /* Limits width to 90% of viewport */
-    max-width: 1100px !important; /* Prevents it from going too wide */
-    margin-left: calc(-40vw + 50%) !important; /* Centers it properly */
+    width: calc(100vw - 320px) !important; /* Limits width to 90% of viewport */
+    max-width: 1200px !important; /* Prevents it from going too wide */
+    margin-left: -160px !important; /* Centers it properly */
 }
 
 .wide-graph iframe {
@@ -63,8 +63,8 @@
 
 /* Ensure content area remains in the right space */
 .book-body {
-    margin-left: 300px; /* Matches sidebar width */
-    max-width: calc(100% - 300px); /* Prevents squeezing */
+    margin-left: 250px; /* Matches sidebar width */
+    max-width: calc(100% - 250px); /* Prevents squeezing */
     padding-right: 20px;
 }
 
