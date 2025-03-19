@@ -58,3 +58,8 @@
 .book-body, .page-inner {
     overflow: visible !important; /* Allow full width elements */
 }
+
+.page-inner {
+    max-width: none !important;
+    width: 100% !important;
+}
