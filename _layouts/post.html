@@ -13,7 +13,6 @@
         {% if page.next %}
             <link rel="next" href="{{site.baseurl}}{{page.next.url}}" />
         {% endif %}
-        <script src="/assets/gitbook/custom-local.js"></script>
 
     </head>
     <body>
@@ -61,6 +60,22 @@
                 gitbook.page.hasChanged({%- include metadata-post.json.tpl -%});
             });
             </script>
+            <script>
+  function resizeIframe(iframe) {
+      if (iframe && iframe.contentWindow && iframe.contentWindow.document.body) {
+          iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+      }
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+      var iframes = document.querySelectorAll(".wide-graph iframe");
+      iframes.forEach(function (iframe) {
+          iframe.onload = function () {
+              resizeIframe(iframe);
+          };
+      });
+  });
+</script>
         </div>
 
         {%- include footer.html -%}
