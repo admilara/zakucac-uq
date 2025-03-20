@@ -33,6 +33,7 @@
     max-width: min(100%, var(--page-wrapper-width, 1200px)) !important; /* Prevents it from going too wide */
     margin-left: 5px !important; /* Centers it properly */
     left: -50%;
+    padding-right: 20px;
 }
 
 .wide-graph iframe {
