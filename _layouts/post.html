@@ -91,34 +91,35 @@
         });
         </script>
         <script>
-document.addEventListener("DOMContentLoaded", function() {
-    function adjustGraphWidth() {
-        let pageWrapper = document.querySelector(".page-wrapper");
-        let bookSummary = document.querySelector(".book-summary");
-        let wideGraph = document.querySelector(".wide-graph");
-
-        if (pageWrapper && wideGraph) {
-            let summaryWidth = bookSummary ? bookSummary.offsetWidth : 0;
-            let availableWidth = pageWrapper.offsetWidth - summaryWidth;
-
-            wideGraph.style.maxWidth = availableWidth + "px";
-            wideGraph.style.width = availableWidth + "px";
-        }
-    }
-
-    // Adjust graph width initially
-    adjustGraphWidth();
-
-    // Listen for window resize events
-    window.addEventListener("resize", adjustGraphWidth);
-
-    // Monitor changes in `.book-summary` (in case it collapses/expands dynamically)
-    let observer = new MutationObserver(adjustGraphWidth);
-    let bookSummary = document.querySelector(".book-summary");
-    if (bookSummary) {
-        observer.observe(bookSummary, { attributes: true, subtree: true, childList: true });
-    }
-});
-</script>
+        document.addEventListener("DOMContentLoaded", function() {
+            function adjustGraphWidth() {
+                let bookSummary = document.querySelector(".book-summary");
+                let wideGraph = document.querySelector(".wide-graph");
+                let bookBody = document.querySelector(".book-body");
+        
+                if (bookSummary && wideGraph && bookBody) {
+                    let summaryWidth = bookSummary.offsetWidth || 300; // Default width if not found
+                    let availableWidth = bookBody.offsetWidth; // Get the width available for content
+        
+                    // Set the graph width dynamically
+                    wideGraph.style.maxWidth = availableWidth + "px";
+                    wideGraph.style.width = availableWidth + "px";
+                }
+            }
+        
+            // Adjust graph width initially
+            adjustGraphWidth();
+        
+            // Listen for window resize events
+            window.addEventListener("resize", adjustGraphWidth);
+        
+            // Monitor changes in `.book-summary` (for collapse/expand detection)
+            let observer = new MutationObserver(adjustGraphWidth);
+            let bookSummary = document.querySelector(".book-summary");
+            if (bookSummary) {
+                observer.observe(bookSummary, { attributes: true, subtree: true, childList: true });
+            }
+        });
+        </script>
     </body>
 </html>

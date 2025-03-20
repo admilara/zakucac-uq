@@ -26,14 +26,6 @@
     width: 100%;
 }
 
-/* Adjust wide-graph width properly */
-/*.wide-graph {
-/*    position: relative;
-/*    width: 100vw !important; /* Limits width to 90% of viewport */
-/*    max-width: min(100%, var(--page-wrapper-width, 1200px)) !important; /* Prevents it from going too wide */
-/*    margin-left: 5px !important; /* Centers it properly */
-/*    padding-right: 20px;
-/*}*/
 
 .wide-graph {
     position: relative !important;
