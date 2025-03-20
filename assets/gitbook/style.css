@@ -30,7 +30,7 @@
 .wide-graph {
     position: relative;
     width: 100vw !important; /* Limits width to 90% of viewport */
-    max-width: 1600px !important; /* Prevents it from going too wide */
+    max-width: min(100%, var(--page-wrapper-width, 1200px)) !important; /* Prevents it from going too wide */
     margin-left: 5px !important; /* Centers it properly */
     left: -50%;
 }

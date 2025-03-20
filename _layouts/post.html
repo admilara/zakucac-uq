@@ -61,24 +61,34 @@
             });
             </script>
             <script>
-  function resizeIframe(iframe) {
-      if (iframe && iframe.contentWindow && iframe.contentWindow.document.body) {
-          iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
-      }
-  }
+              function resizeIframe(iframe) {
+                  if (iframe && iframe.contentWindow && iframe.contentWindow.document.body) {
+                  iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+                  }
+              }
 
-  document.addEventListener("DOMContentLoaded", function () {
-      var iframes = document.querySelectorAll(".wide-graph iframe");
-      iframes.forEach(function (iframe) {
-          iframe.onload = function () {
-              resizeIframe(iframe);
-          };
-      });
-  });
-</script>
+              document.addEventListener("DOMContentLoaded", function () {
+                  var iframes = document.querySelectorAll(".wide-graph iframe");
+                      iframes.forEach(function (iframe) {
+                          iframe.onload = function () {
+                              resizeIframe(iframe);
+                          };
+                      });
+                  });
+            </script>
         </div>
 
         {%- include footer.html -%}
-
+        <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let pageWrapper = document.querySelector(".page-wrapper");
+            let wideGraph = document.querySelector(".wide-graph");
+        
+            if (pageWrapper && wideGraph) {
+                let wrapperWidth = pageWrapper.offsetWidth;
+                wideGraph.style.maxWidth = wrapperWidth + "px";
+            }
+        });
+        </script>
     </body>
 </html>
