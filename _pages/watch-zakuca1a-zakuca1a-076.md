@@ -1,5 +1,5 @@
 ---
-title: GEN A - Watch 001
+title: GEN A - Watch 076
 author: admilara
 date: 2025-03-19
 category: UQ regulacija
@@ -11,11 +11,11 @@ layout: post
 </span>
 
 <span style="font-size: 18px; font-weight: bold; color: red; font-family: Helvetica; text-align: center">
-    Watch 001
+    Watch 076
 </span>
 
 Na grafovima niže prikazani su zapisi veličina dostavljeni od strane Končar INEM-a. 
-Sve veličine su preuzete iz dostavljene log datoteke `watch-zakuca1a-zakuca1a-001.log`.
+Sve veličine su preuzete iz dostavljene log datoteke `watch-zakuca1a-zakuca1a-076.log`.
                                
 Prikazane veličine su:
 {% raw %}
@@ -40,9 +40,10 @@ table {
 | **COSHREF** | [pu] | Referenca faktora snage na sučelju |
 | **IFACT** | [A] | Struja uzbude |
 | **UFACT** | [V] | Napon uzbude |
+| **VHINC** | [log16] | Nalog za povećanje reference U na VN (binarni signal) |
 
 {% endraw %}
 
 <div class="wide-graph">
-    <iframe src="{{ site.baseurl }}/pages/watch-htmls-a/watch-zakuca1a-zakuca1a-001.html" width="100%" height="800px" frameborder="0"></iframe>
+    <iframe src="{{ site.baseurl }}/pages/watch-htmls-a/watch-zakuca1a-zakuca1a-076.html" width="100%" height="800px" frameborder="0"></iframe>
 </div>

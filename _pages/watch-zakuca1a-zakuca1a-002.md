@@ -1,5 +1,5 @@
 ---
-title: GEN A - Watch 001
+title: GEN A - Watch 002
 author: admilara
 date: 2025-03-19
 category: UQ regulacija
@@ -11,11 +11,11 @@ layout: post
 </span>
 
 <span style="font-size: 18px; font-weight: bold; color: red; font-family: Helvetica; text-align: center">
-    Watch 001
+    Watch 002
 </span>
 
 Na grafovima niže prikazani su zapisi veličina dostavljeni od strane Končar INEM-a. 
-Sve veličine su preuzete iz dostavljene log datoteke `watch-zakuca1a-zakuca1a-001.log`.
+Sve veličine su preuzete iz dostavljene log datoteke `watch-zakuca1a-zakuca1a-002.log`.
                                
 Prikazane veličine su:
 {% raw %}
@@ -44,5 +44,5 @@ table {
 {% endraw %}
 
 <div class="wide-graph">
-    <iframe src="{{ site.baseurl }}/pages/watch-htmls-a/watch-zakuca1a-zakuca1a-001.html" width="100%" height="800px" frameborder="0"></iframe>
+    <iframe src="{{ site.baseurl }}/pages/watch-htmls-a/watch-zakuca1a-zakuca1a-002.html" width="100%" height="800px" frameborder="0"></iframe>
 </div>
