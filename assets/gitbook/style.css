@@ -36,13 +36,12 @@
 /*}*/
 
 .wide-graph {
-    position: absolute;
-    left: 0;
-    right: 0;
-    width: 100vw !important; /* Ensure full viewport width */
-    max-width: 100vw !important; /* Prevent unnecessary limiting */
-    margin-left: auto;
-    margin-right: auto;
+    position: relative;
+    width: calc(100% + 200px) !important; /* Expand beyond normal width but not full viewport */
+    max-width: min(100%, 1400px) !important; /* Prevents it from being too wide */
+    left: 50%;
+    transform: translateX(-50%); /* Centers it correctly */
+    margin-top: 20px;
     padding-right: 20px;
 }
 
