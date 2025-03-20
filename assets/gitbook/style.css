@@ -55,7 +55,7 @@
 
 /* Restore sidebar layout */
 .book-summary {
-    position: relative;
+    position: fixed;
     left: 0;
     top: 0;
     width: 300px; /* Sidebar width */
