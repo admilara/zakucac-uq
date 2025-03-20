@@ -11,8 +11,13 @@ table {
 }
 </style>
 
-<h1 style="text-align: center; font-family: Helvetica; color: red">21.02.2025. UQ regulacija na sučelju (AGR A)</h1>
-<h2 style="text-align: center; font-family: Helvetica; color: red">Podatci: Končar INEM</h2>
+
+<span style="font-size: 20px; font-weight: bold; color: red; font-family: Helvetica; text-align: center">
+    UQ regulacija na sučelju (A) - 21.02.2025.
+</span>
+<span style="font-size: 18px; font-weight: bold; color: red; font-family: Helvetica; text-align: center">
+    Podatci: Končar INEM
+</span>
 
 Za vrijeme trajanja cijelog pokusa agregata A u režimu regulacije jalove snage i napona na sučelju,
 snimani su Watch zapisi iz sustava uzbude. Pokus na agregatu A napravljen je 21.02.2025. 
