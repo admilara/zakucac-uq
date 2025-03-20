@@ -37,7 +37,7 @@
 
 .wide-graph {
     position: absolute; /* Breaks it out of parent constraints */
-    left: 50%; /* Aligns with the page-wrapper */
+    left: -50%; /* Aligns with the page-wrapper */
     right: 0; /* Ensures it fills full width */
     width: calc(100vw - 300px) !important; /* Ensures it does not go over the sidebar */
     max-width: 1400px !important; /* Keeps a max cap */
