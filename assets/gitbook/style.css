@@ -36,11 +36,12 @@
 /*}*/
 
 .wide-graph {
-    position: relative;
-    width: calc(100vw - 300px) !important; /* Adjust width based on sidebar */
-    max-width: 1400px !important; /* Caps the width */
-    left: 50%;
-    transform: translateX(-50%); /* Perfect centering */
+    position: absolute; /* Breaks it out of parent constraints */
+    left: 0; /* Aligns with the page-wrapper */
+    right: 0; /* Ensures it fills full width */
+    width: calc(100vw - 300px) !important; /* Ensures it does not go over the sidebar */
+    max-width: 1400px !important; /* Keeps a max cap */
+    margin: 0 auto; /* Ensures it stays centered */
     padding: 20px;
 }
 
