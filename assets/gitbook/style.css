@@ -64,9 +64,9 @@
 
 /* Ensure content area remains in the right space */
 .book-body {
-    margin-left: 250px; /* Matches sidebar width */
-    max-width: calc(100% - 250px); /* Prevents squeezing */
-    padding-right: 20px;
+    margin-left: 300px; /* Matches sidebar width */
+    max-width: calc(100% - 300px); /* Prevents squeezing */
+    padding-right: 0px;
 }
 
 /* Ensure tables and text don’t overflow */
