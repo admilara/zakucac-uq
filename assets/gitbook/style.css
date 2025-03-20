@@ -27,11 +27,22 @@
 }
 
 /* Adjust wide-graph width properly */
+/*.wide-graph {
+/*    position: relative;
+/*    width: 100vw !important; /* Limits width to 90% of viewport */
+/*    max-width: min(100%, var(--page-wrapper-width, 1200px)) !important; /* Prevents it from going too wide */
+/*    margin-left: 5px !important; /* Centers it properly */
+/*    padding-right: 20px;
+/*}*/
+
 .wide-graph {
-    position: relative;
-    width: 100vw !important; /* Limits width to 90% of viewport */
-    max-width: min(100%, var(--page-wrapper-width, 1200px)) !important; /* Prevents it from going too wide */
-    margin-left: 5px !important; /* Centers it properly */
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100vw !important; /* Ensure full viewport width */
+    max-width: 100vw !important; /* Prevent unnecessary limiting */
+    margin-left: auto;
+    margin-right: auto;
     padding-right: 20px;
 }
 
