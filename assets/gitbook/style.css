@@ -78,6 +78,11 @@ table {
     word-wrap: break-word;
 }
 
+.book-summary.hidden + .book-body {
+    margin-left: 300px !important; /* Keeps reserved space */
+    max-width: calc(100% - 300px) !important;
+}
+
 /* Responsive Fix for Mobile */
 @media screen and (max-width: 1024px) {
     .wide-graph {

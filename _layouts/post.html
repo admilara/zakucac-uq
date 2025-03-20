@@ -90,5 +90,28 @@
             }
         });
         </script>
+        <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let sidebar = document.querySelector(".book-summary");
+            let content = document.querySelector(".book-body");
+
+            function checkSidebar() {
+                if (sidebar.style.display === "none" || sidebar.classList.contains("hidden")) {
+                    content.style.marginLeft = "300px"; // Keeps space reserved
+                    content.style.maxWidth = "calc(100% - 300px)";
+                } else {
+                    content.style.marginLeft = "300px"; // No shifting
+                    content.style.maxWidth = "calc(100% - 300px)";
+                }
+            }
+
+            // Run the check initially
+            checkSidebar();
+
+            // Observe for sidebar visibility changes
+            let observer = new MutationObserver(checkSidebar);
+            observer.observe(sidebar, { attributes: true, attributeFilter: ["style", "class"] });
+            });
+        </script>
     </body>
 </html>
