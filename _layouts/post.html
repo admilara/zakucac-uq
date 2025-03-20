@@ -120,6 +120,27 @@
                 observer.observe(bookSummary, { attributes: true, subtree: true, childList: true });
             }
         });
+        <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            function resizeIframe(iframe) {
+                if (iframe) {
+                    setTimeout(function () {
+                        if (iframe.contentWindow && iframe.contentWindow.document.body) {
+                            iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+                        } else {
+                            iframe.style.height = "800px"; // Default height
+                        }
+                    }, 500); // Small delay to ensure full load
+                }
+            }
+        
+            var iframes = document.querySelectorAll(".wide-graph iframe");
+            iframes.forEach(function (iframe) {
+                iframe.onload = function () {
+                    resizeIframe(iframe);
+                };
+            });
+        });
         </script>
     </body>
 </html>
