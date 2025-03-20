@@ -29,9 +29,11 @@
 /* Adjust wide-graph width properly */
 .wide-graph {
     position: relative;
-    width: 100% !important; /* Limits width to 90% of viewport */
+    width: 100vw !important; /* Limits width to 90% of viewport */
     max-width: 1600px !important; /* Prevents it from going too wide */
     margin-left: 0px !important; /* Centers it properly */
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .wide-graph iframe {
