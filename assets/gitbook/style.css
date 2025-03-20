@@ -16,13 +16,13 @@
 
 /* Restrict regular content but center it */
 .page-inner {
-    max-width: 800px;
+    max-width: 960px;
     width: 100%;
 }
 
 /* Make sure normal text content does not stretch */
 .markdown-section {
-    max-width: 800px;
+    max-width: 960px;
     width: 100%;
 }
 
