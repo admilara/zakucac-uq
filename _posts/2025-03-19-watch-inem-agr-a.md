@@ -33,12 +33,12 @@ snimani su Watch zapisi iz sustava uzbude. Pokus na agregatu A napravljen je 21.
     </thead>
     <tbody>
         <tr>
-            <td style="text-align:center"><a href="{{ site.baseurl }}/pages/watch-zakuca1a-zakuca1a-001/">Watch 001</a></td>
+            <td style="text-align:center"><a href="{{ site.baseurl }}/watch-md-a/watch-zakuca1a-zakuca1a-001/">Watch 001</a></td>
             <td style="text-align:center">10:41:19.072</td>
             <td style="text-align:center">10:41:36.860</td>
         </tr>
         <tr>
-            <td style="text-align:center"><a href="{{ site.baseurl }}/pages/watch-zakuca1a-zakuca1a-002/">Watch 002</a></td>
+            <td style="text-align:center"><a href="{{ site.baseurl }}/watch-md-a/watch-zakuca1a-zakuca1a-002/">Watch 002</a></td>
             <td style="text-align:center">10:42:34.650</td>
             <td style="text-align:center">10:50:28.601</td>
         </tr>
