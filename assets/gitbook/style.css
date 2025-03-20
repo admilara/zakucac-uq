@@ -36,20 +36,20 @@
 /*}*/
 
 .wide-graph {
-    max-width: 100%;
-    width: 100%;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: relative !important;
+    width: calc(100vw - 300px) !important; /* Subtract book-summary width */
+    max-width: calc(100vw - 300px) !important;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 20px 0;
 }
 
 .wide-graph iframe {
-    max-width: 100%;
-    width: 100%;
+    width: 100% !important;
+    max-width: 100% !important;
     height: auto;
-    border: none;
     display: block;
+    border: none;
 }
 
 /* Prevent parent constraints */
