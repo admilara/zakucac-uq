@@ -36,13 +36,13 @@
 /*}*/
 
 .wide-graph {
-    position: relative;
-    width: calc(100% + 200px) !important; /* Expand beyond normal width but not full viewport */
-    max-width: min(100%, 1400px) !important; /* Prevents it from being too wide */
-    left: 50%;
-    transform: translateX(-50%); /* Centers it correctly */
-    margin-top: 20px;
-    padding-right: 20px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100% !important; /* Ensures it stretches fully */
+    max-width: var(--page-wrapper-width, 1400px) !important; /* Caps the width */
+    margin: 0 auto; /* Centers it properly */
+    padding: 20px;
 }
 
 .wide-graph iframe {
@@ -105,10 +105,4 @@ table {
         margin-left: 0;
         max-width: 100%;
     }
-}
-
-.markdown-section .wide-graph {
-    max-width: none !important; /* Removes the 960px restriction */
-    width: 100vw !important;
-    margin-left: calc(-50vw + 50%) !important; /* Fix positioning */
 }
