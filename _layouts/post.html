@@ -143,34 +143,47 @@
         });
         </script>
         <script>
-        window.onload = function () {
-            function adjustGraphWidth() {
-                let bookSummary = document.querySelector(".book-summary");
-                let wideGraph = document.querySelector(".wide-graph");
-                let bookBody = document.querySelector(".book-body");
+        function adjustGraphWidth() {
+            const wideGraph = document.querySelector(".wide-graph");
+            const bookBody = document.querySelector(".book-body");
         
-                if (bookSummary && wideGraph && bookBody) {
-                    let availableWidth = bookBody.offsetWidth;
-                    wideGraph.style.maxWidth = availableWidth + "px";
-                    wideGraph.style.width = availableWidth + "px";
-                    wideGraph.style.visibility = "visible";
-                }
+            if (wideGraph && bookBody) {
+                const availableWidth = bookBody.offsetWidth;
+                wideGraph.style.maxWidth = availableWidth + "px";
+                wideGraph.style.width = availableWidth + "px";
             }
+        }
         
-            // ✅ Listen to GitBook page change
-            var gitbook = gitbook || [];
-            gitbook.push(function () {
-                adjustGraphWidth(); // On first load or navigation
-
-                window.addEventListener("resize", adjustGraphWidth);
-
-                const bookSummary = document.querySelector(".book-summary");
-                if (bookSummary) {
-                    const observer = new MutationObserver(adjustGraphWidth);
-                    observer.observe(bookSummary, { attributes: true, subtree: true, childList: true });
-                }
-            });
-        };
+        function setupGraphResize() {
+            const wideGraph = document.querySelector(".wide-graph");
+            const iframe = wideGraph?.querySelector("iframe");
+        
+            if (!wideGraph || !iframe) return;
+        
+            // Hide graph initially
+            wideGraph.style.visibility = "hidden";
+        
+            iframe.onload = function () {
+                adjustGraphWidth();
+                wideGraph.style.visibility = "visible";
+            };
+        
+            // Listen to window resize
+            window.addEventListener("resize", adjustGraphWidth);
+        
+            // Watch for sidebar toggle
+            const sidebar = document.querySelector(".book-summary");
+            if (sidebar) {
+                const observer = new MutationObserver(adjustGraphWidth);
+                observer.observe(sidebar, { attributes: true, childList: true, subtree: true });
+            }
+        }
+        
+        // Run on GitBook page changes and initial load
+        var gitbook = gitbook || [];
+        gitbook.push(function () {
+            setupGraphResize();
+        });
         </script>
     </body>
 </html>
