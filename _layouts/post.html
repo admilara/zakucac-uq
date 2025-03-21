@@ -142,5 +142,30 @@
             });
         });
         </script>
+        <script>
+        window.onload = function () {
+            function adjustGraphWidth() {
+                let bookSummary = document.querySelector(".book-summary");
+                let wideGraph = document.querySelector(".wide-graph");
+                let bookBody = document.querySelector(".book-body");
+        
+                if (bookSummary && wideGraph && bookBody) {
+                    let availableWidth = bookBody.offsetWidth;
+                    wideGraph.style.maxWidth = availableWidth + "px";
+                    wideGraph.style.width = availableWidth + "px";
+                    wideGraph.style.visibility = "visible";
+                }
+            }
+        
+            adjustGraphWidth(); // Initial adjustment after full load
+            window.addEventListener("resize", adjustGraphWidth);
+        
+            let observer = new MutationObserver(adjustGraphWidth);
+            let bookSummary = document.querySelector(".book-summary");
+            if (bookSummary) {
+                observer.observe(bookSummary, { attributes: true, subtree: true, childList: true });
+            }
+        };
+        </script>
     </body>
 </html>
