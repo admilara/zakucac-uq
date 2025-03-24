@@ -1,4 +1,3 @@
-<script>
 function adjustGraphWidth(wideGraph, bookBody) {
     if (!wideGraph || !bookBody) return;
     const availableWidth = bookBody.offsetWidth;
@@ -70,4 +69,3 @@ window.addEventListener("load", function () {
     console.log("[GRAPH DEBUG] window.load triggered");
     waitForIframeAndShowGraph();
 });
-</script>
