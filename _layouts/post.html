@@ -60,88 +60,10 @@
                 gitbook.page.hasChanged({%- include metadata-post.json.tpl -%});
             });
             </script>
-            <script>
-              function resizeIframe(iframe) {
-                  if (iframe && iframe.contentWindow && iframe.contentWindow.document.body) {
-                  iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
-                  }
-              }
-
-              document.addEventListener("DOMContentLoaded", function () {
-                  var iframes = document.querySelectorAll(".wide-graph iframe");
-                      iframes.forEach(function (iframe) {
-                          iframe.onload = function () {
-                              resizeIframe(iframe);
-                          };
-                      });
-                  });
-            </script>
+            
         </div>
 
         {%- include footer.html -%}
-        <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            let pageWrapper = document.querySelector(".page-wrapper");
-            let wideGraph = document.querySelector(".wide-graph");
-        
-            if (pageWrapper && wideGraph) {
-                let wrapperWidth = pageWrapper.offsetWidth;
-                wideGraph.style.maxWidth = wrapperWidth + "px";
-            }
-        });
-        </script>
-        <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            function adjustGraphWidth() {
-                let bookSummary = document.querySelector(".book-summary");
-                let wideGraph = document.querySelector(".wide-graph");
-                let bookBody = document.querySelector(".book-body");
-        
-                if (bookSummary && wideGraph && bookBody) {
-                    let summaryWidth = bookSummary.offsetWidth || 300; // Default width if not found
-                    let availableWidth = bookBody.offsetWidth; // Get the width available for content
-        
-                    // Set the graph width dynamically
-                    wideGraph.style.maxWidth = availableWidth + "px";
-                    wideGraph.style.width = availableWidth + "px";
-                }
-            }
-        
-            // Adjust graph width initially
-            adjustGraphWidth();
-        
-            // Listen for window resize events
-            window.addEventListener("resize", adjustGraphWidth);
-        
-            // Monitor changes in `.book-summary` (for collapse/expand detection)
-            let observer = new MutationObserver(adjustGraphWidth);
-            let bookSummary = document.querySelector(".book-summary");
-            if (bookSummary) {
-                observer.observe(bookSummary, { attributes: true, subtree: true, childList: true });
-            }
-        });
-        <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            function resizeIframe(iframe) {
-                if (iframe) {
-                    setTimeout(function () {
-                        if (iframe.contentWindow && iframe.contentWindow.document.body) {
-                            iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
-                        } else {
-                            iframe.style.height = "800px"; // Default height
-                        }
-                    }, 500); // Small delay to ensure full load
-                }
-            }
-        
-            var iframes = document.querySelectorAll(".wide-graph iframe");
-            iframes.forEach(function (iframe) {
-                iframe.onload = function () {
-                    resizeIframe(iframe);
-                };
-            });
-        });
-        </script>
         <script>
         function adjustGraphWidth() {
             const wideGraph = document.querySelector(".wide-graph");
@@ -158,10 +80,7 @@
             const wideGraph = document.querySelector(".wide-graph");
             const iframe = wideGraph?.querySelector("iframe");
         
-            if (!wideGraph || !iframe) return;
-        
-            // Hide graph initially
-            wideGraph.style.visibility = "hidden";
+            if (!wideGraph || !iframe) return;            
         
             iframe.onload = function () {
                 adjustGraphWidth();
