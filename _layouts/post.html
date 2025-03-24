@@ -73,42 +73,55 @@
                 const availableWidth = bookBody.offsetWidth;
                 wideGraph.style.maxWidth = availableWidth + "px";
                 wideGraph.style.width = availableWidth + "px";
+                console.log("[GRAPH DEBUG] adjusted width to", availableWidth);
             }
         }
         
-        function setupGraphResize() {
+        function setupGraphResizeOnceReady() {
             const wideGraph = document.querySelector(".wide-graph");
             const iframe = wideGraph?.querySelector("iframe");
         
-            if (!wideGraph || !iframe) return;            
+            if (!wideGraph || !iframe) {
+                console.log("[GRAPH DEBUG] waiting for .wide-graph and iframe...");
+                setTimeout(setupGraphResizeOnceReady, 100); // Retry in 100ms
+                return;
+            }
+        
+            // Hide until ready
+            wideGraph.style.visibility = "hidden";
         
             iframe.onload = function () {
+                console.log("[GRAPH DEBUG] iframe onload triggered");
                 adjustGraphWidth();
                 wideGraph.style.visibility = "visible";
             };
-            
+        
+            // Fallback in case onload doesn’t trigger
             setTimeout(() => {
                 if (wideGraph.style.visibility !== "visible") {
+                    console.log("[GRAPH DEBUG] fallback triggered");
                     adjustGraphWidth();
                     wideGraph.style.visibility = "visible";
                 }
-            }, 1000);
-            
-            // Listen to window resize
+            }, 1500);
+        
             window.addEventListener("resize", adjustGraphWidth);
         
-            // Watch for sidebar toggle
             const sidebar = document.querySelector(".book-summary");
             if (sidebar) {
-                const observer = new MutationObserver(adjustGraphWidth);
+                const observer = new MutationObserver(() => {
+                    console.log("[GRAPH DEBUG] sidebar changed");
+                    adjustGraphWidth();
+                });
                 observer.observe(sidebar, { attributes: true, childList: true, subtree: true });
             }
         }
         
-        // Run on GitBook page changes and initial load
+        // Run it after GitBook loads
         var gitbook = gitbook || [];
         gitbook.push(function () {
-            setupGraphResize();
+            console.log("[GRAPH DEBUG] GitBook page hook triggered");
+            setupGraphResizeOnceReady();
         });
         </script>
     </body>
