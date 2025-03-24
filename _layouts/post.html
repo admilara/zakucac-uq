@@ -65,64 +65,50 @@
 
         {%- include footer.html -%}
         <script>
-        function adjustGraphWidth() {
-            const wideGraph = document.querySelector(".wide-graph");
-            const bookBody = document.querySelector(".book-body");
-        
-            if (wideGraph && bookBody) {
-                const availableWidth = bookBody.offsetWidth;
-                wideGraph.style.maxWidth = availableWidth + "px";
-                wideGraph.style.width = availableWidth + "px";
-                console.log("[GRAPH DEBUG] adjusted width to", availableWidth);
-            }
-        }
-        
-        function setupGraphResizeOnceReady() {
+        function waitForIframeAndShowGraph() {
             const wideGraph = document.querySelector(".wide-graph");
             const iframe = wideGraph?.querySelector("iframe");
+            const bookBody = document.querySelector(".book-body");
         
-            if (!wideGraph || !iframe) {
+            if (!wideGraph || !iframe || !bookBody) {
                 console.log("[GRAPH DEBUG] waiting for .wide-graph and iframe...");
-                setTimeout(setupGraphResizeOnceReady, 100); // Retry in 100ms
+                setTimeout(waitForIframeAndShowGraph, 100);
                 return;
             }
         
-            // Hide until ready
             wideGraph.style.visibility = "hidden";
         
             iframe.onload = function () {
-                console.log("[GRAPH DEBUG] iframe onload triggered");
-                adjustGraphWidth();
+                const availableWidth = bookBody.offsetWidth;
+                wideGraph.style.maxWidth = availableWidth + "px";
+                wideGraph.style.width = availableWidth + "px";
                 wideGraph.style.visibility = "visible";
+                console.log("[GRAPH DEBUG] iframe onload triggered");
             };
         
-            // Fallback in case onload doesn’t trigger
+            // Fallback in case iframe is cached
             setTimeout(() => {
                 if (wideGraph.style.visibility !== "visible") {
-                    console.log("[GRAPH DEBUG] fallback triggered");
-                    adjustGraphWidth();
+                    const availableWidth = bookBody.offsetWidth;
+                    wideGraph.style.maxWidth = availableWidth + "px";
+                    wideGraph.style.width = availableWidth + "px";
                     wideGraph.style.visibility = "visible";
+                    console.log("[GRAPH DEBUG] fallback triggered");
                 }
-            }, 1500);
-        
-            window.addEventListener("resize", adjustGraphWidth);
-        
-            const sidebar = document.querySelector(".book-summary");
-            if (sidebar) {
-                const observer = new MutationObserver(() => {
-                    console.log("[GRAPH DEBUG] sidebar changed");
-                    adjustGraphWidth();
-                });
-                observer.observe(sidebar, { attributes: true, childList: true, subtree: true });
-            }
+            }, 1200);
         }
         
-        // Run it after GitBook loads
-        var gitbook = gitbook || [];
-        gitbook.push(function () {
-            console.log("[GRAPH DEBUG] GitBook page hook triggered");
-            setupGraphResizeOnceReady();
+        document.addEventListener("DOMContentLoaded", function () {
+            console.log("[GRAPH DEBUG] DOMContentLoaded triggered");
+            waitForIframeAndShowGraph();
         });
+        
+        if (typeof gitbook !== "undefined") {
+            gitbook.events.bind("page.change", function () {
+                console.log("[GRAPH DEBUG] GitBook page.change triggered");
+                waitForIframeAndShowGraph();
+            });
+        }
         </script>
     </body>
 </html>
