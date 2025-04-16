@@ -491,8 +491,8 @@ md_template = """
 ---
 title: PROCIS - GEN {unit_head}
 author: admilara
-date: 2025-03-24
-category: Jekyll
+date: 2025-04-16
+category: UQ regulacija
 layout: post
 ---
 
