@@ -1,6 +1,6 @@
 
 ---
-title: PROCIS - GEN a
+title: PROCIS - GEN A
 author: admilara
 date: 2025-03-24
 category: Jekyll

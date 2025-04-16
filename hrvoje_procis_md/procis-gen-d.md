@@ -1,6 +1,6 @@
 
 ---
-title: PROCIS - GEN d
+title: PROCIS - GEN D
 author: admilara
 date: 2025-03-24
 category: Jekyll

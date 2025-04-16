@@ -395,12 +395,12 @@ def graf(gen, df, bay, signal_dict, annotations):
 #                   START - LOKACIJA FILEOVA
 # =============================================================================
 
-mypath = r"""C:\Users\larab\Documents\GitHub\uq_vn_regulacija\hrvoje_procis_data"""
+mypath = r"""C:\Users\larab\Documents\GitHub\zakucac-uq\hrvoje_procis_data"""
 files = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 output_dir = "hrvoje_procis_md"
 os.makedirs(output_dir, exist_ok=True)
 
-savepath = r"""C:\Users\larab\Documents\GitHub\uq_vn_regulacija\hrvoje_procis_htmls"""
+savepath = r"""C:\Users\larab\Documents\GitHub\zakucac-uq\hrvoje_procis_htmls"""
 
 for file in files:
     print(file)
@@ -479,11 +479,11 @@ mjerenja = {"Naponi": {"signals": ["{unit}_NAPON_GENERATORA_UL1L2",
                                    "STRUJA NA VN STRANI (110 kV) - T"],
                           "yaxis": "I(VN) [A]",
                           "title": "Struje na VN strani (110 kV) - {unit}"},
-            "Cosphi": {"signals": ["{unit}_{bay}_110KV_COS_FI_"],
-                       "colors": ["red"],
-                       "name": ["COS PHI NA VN STRANI (110 KV)"],
-                       "yaxis": "cos phi (VN)",
-                       "title": "Faktor snage na sučelju (110 kV) - {unit}"}
+#            "Cosphi": {"signals": ["{unit}_{bay}_110KV_COS_FI_"],
+#                       "colors": ["red"],
+#                       "name": ["COS PHI NA VN STRANI (110 KV)"],
+#                       "yaxis": "cos phi (VN)",
+#                       "title": "Faktor snage na sučelju (110 kV) - {unit}"}
             }
 
 # TEMPLATE MD
