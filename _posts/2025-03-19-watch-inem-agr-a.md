@@ -7,7 +7,7 @@ layout: post
 ---
 <style scoped>
 table {
-  font-size: 13px;
+  font-size: 12px;
 }
 </style>
 
