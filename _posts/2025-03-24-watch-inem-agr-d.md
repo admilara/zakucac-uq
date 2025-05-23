@@ -19,8 +19,8 @@ table {
     Podatci: Končar INEM
 </span>
 
-Za vrijeme trajanja cijelog pokusa agregata A u režimu regulacije jalove snage i napona na sučelju,
-snimani su Watch zapisi iz sustava uzbude. Pokus na agregatu A napravljen je 05.03.2025. 
+Za vrijeme trajanja cijelog pokusa agregata D u režimu regulacije jalove snage i napona na sučelju,
+snimani su Watch zapisi iz sustava uzbude. Pokus na agregatu D napravljen je 05.03.2025. 
 
 {% capture raw_html %}
 <table>

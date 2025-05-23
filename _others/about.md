@@ -1,7 +1,7 @@
 ---
 title: About others
-author: Tao He
-date: 2022-02-04
+author: Lara Buljan
+date: 2025-02-28
 category: Jekyll
 layout: post
 ---
