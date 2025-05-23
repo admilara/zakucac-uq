@@ -18,12 +18,16 @@
 .page-inner {
     max-width: 960px;
     width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Make sure normal text content does not stretch */
 .markdown-section {
     max-width: 960px;
     width: 100%;
+    min-height: 100vh;
 }
 
 
@@ -42,6 +46,7 @@
     max-width: 100% !important;
     display: block;
     border: none;
+    min-height: 100vh;
 }
 
 /* Prevent parent constraints */
