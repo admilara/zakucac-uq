@@ -1,5 +1,18 @@
+{%- assign section = nil -%}
+{%- if page.dir -%}{%- assign section = site.record_sections | where: "dir", page.dir | first -%}{%- endif -%}
+{%- if section -%}
+    {%- comment -%} site.pages would return the "pages" collection here, so use html_pages {%- endcomment -%}
+    {%- assign siblings = site.html_pages | where: "dir", page.dir | sort: "path" -%}
+    {%- assign rec_prev = nil -%}{%- assign rec_next = nil -%}{%- assign last_seen = nil -%}{%- assign found = false -%}
+    {%- for s in siblings -%}
+        {%- if s.nav_exclude -%}{%- continue -%}{%- endif -%}
+        {%- if found and rec_next == nil -%}{%- assign rec_next = s -%}{%- endif -%}
+        {%- if s.url == page.url -%}{%- assign found = true -%}{%- assign rec_prev = last_seen -%}{%- endif -%}
+        {%- assign last_seen = s -%}
+    {%- endfor -%}
+{%- endif -%}
 <!DOCTYPE HTML>
-<html lang="en" >
+<html lang="{{ site.lang | default: 'hr' }}" >
     <head>
 
         {%- include head.html -%}
@@ -36,7 +49,22 @@
                 <div class="body-inner">
                     {%- include body.html -%}
 
-                    {% if page.previous %}
+                    {% if section %}
+                        {% if rec_prev %}
+                            <a href="{{site.baseurl}}{{rec_prev.url}}" class="navigation navigation-prev navigation-unique" aria-label="Prethodni zapis: {{rec_prev.title}}">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        {% else %}
+                            <a href="{{site.baseurl}}{{section.parent_url}}" class="navigation navigation-prev navigation-unique" aria-label="Natrag: {{section.parent_title}}">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        {% endif %}
+                        {% if rec_next %}
+                            <a href="{{site.baseurl}}{{rec_next.url}}" class="navigation navigation-next navigation-unique" aria-label="Sljedeći zapis: {{rec_next.title}}">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        {% endif %}
+                    {% elsif page.previous %}
                         <a href="{{site.baseurl}}{{page.previous.url}}" class="navigation navigation-prev navigation-unique" aria-label="Previous page: {{page.previous.title}}">
                             <i class="fa fa-angle-left"></i>
                         </a>
@@ -46,7 +74,7 @@
                         </a>
                     {% endif %}
 
-                    {% if page.next %}
+                    {% if section == nil and page.next %}
                         <a href="{{site.baseurl}}{{page.next.url}}" class="navigation navigation-next navigation-unique" aria-label="Next page: {{page.next.title}}">
                             <i class="fa fa-angle-right"></i>
                         </a>
@@ -62,7 +90,6 @@
             </script>
             
         </div>
-        <script src="{{ '/assets/gitbook/custom-local.js' | relative_url }}"></script>
         {%- include footer.html -%}
     </body>
 </html>

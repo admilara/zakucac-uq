@@ -239,7 +239,7 @@ snimani su Watch zapisi iz sustava uzbude. Pokus na agregatu A napravljen je 21.
         </tr>
         <tr>
             <td style="text-align:center"><a href="{{ site.baseurl }}/watch-md-a/watch-zakuca1a-zakuca1a-081/">Watch 081</a></td>
-            <td style="text-align:center">14:40:54.141</td>
+            <td style="text-align:center">14:40:54.114</td>
             <td style="text-align:center">14:41:04.026</td>
         </tr>
         <tr>

@@ -1,10 +1,13 @@
 # Configurations
 title:            Obrada dostavljenih podataka - UQ regulacija na sučelju u HE Zakučac
 longtitle:        Obrada dostavljenih podataka - UQ regulacija na sučelju u HE Zakučac
+short_title:      UQ regulacija · HE Zakučac
 author:           admilara
 email:            lara.buljan@ie-zagreb.hr
+github_username:  admilara
 description: >
-  
+  Rezultati obrade Watch zapisa sustava uzbude i PROCIS zapisa s pokusa regulacije
+  napona i jalove snage na sučelju HE Zakučac s prijenosnom mrežom (21.02. i 05.03.2025.).
 
 version:          1.0
 gitbook_version:  1.0
@@ -48,21 +51,41 @@ permalink:                /:name/
 
 exclude:
   - _drafts
+  - README.md
+  - Gemfile
+  - LICENSE
+  - hrvoje-procis-data/
+  - ListaDogadaja.xlsx
+  - timestamps_agregat_a.xlsx
+  - timestamps_agregat_d.xlsx
+  - uq_reg_agregat_a_watch.py
+  - uq_reg_agregat_d_watch_s_anotacijama.py
+  - uq_reg_procis.py
 
 collections:
   pages:
-    output: true
-    permalink: /:collection/:path/
-  others:
     output: true
     permalink: /:collection/:path/
 
 ordered_collections:
   - posts
   - pages
-  - others
 
 page_width: 800px
+
+# Watch/PROCIS record pages live in plain folders (not collections), so they are not in the
+# sidebar. This maps each folder to its overview post: the post is highlighted in the sidebar,
+# a back link is shown above the title, and the < > arrows step through the folder's records.
+record_sections:
+  - dir: /watch-md-a/
+    parent_url: /2025-03-19-watch-inem-agr-a/
+    parent_title: Agregat A - Watch datoteke
+  - dir: /watch-md-d/
+    parent_url: /2025-03-24-watch-inem-agr-d/
+    parent_title: Agregat D - Watch datoteke
+  - dir: /hrvoje-procis-md/
+    parent_url: /2025-04-16-procis/
+    parent_title: Agregati A i D - PROCIS
 
 destination:      ./_site
 incremental:      false

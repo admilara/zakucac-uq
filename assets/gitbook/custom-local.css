@@ -1,5 +1,334 @@
-/* This file is kept intentionally blank inside the jekyll-github-theme
- * It gets imported at the end of custom.css
- * Its purpose is for users of the theme to be able to add css rules from a blank file
- *   these get simply added to the ones already active in the layout.
- */
+/* ==========================================================================
+ * UQ regulacija · HE Zakučac — site styles on top of jekyll-gitbook.
+ * Loaded last (after style.css and custom.css), so these rules win.
+ * Colours are variables so GitBook's sepia (color-theme-1) and night
+ * (color-theme-2) modes from the "A" menu keep working.
+ * ========================================================================== */
+
+.book {
+    --ink: #18202b;
+    --ink-2: #4a5566;
+    --ink-3: #7a8494;
+    --line: #e1e5eb;
+    --line-2: #eef1f4;
+    --surface: #ffffff;
+    --bg: #f5f6f8;
+    --accent: #0f6e8c;          /* deep teal */
+    --accent-soft: #e3f1f5;
+    --side: #131a24;
+    --side-2: #1c2531;
+    --side-ink: #c9d1dc;
+    --radius: 10px;
+    --shadow: 0 1px 2px rgba(16, 24, 40, .05), 0 1px 3px rgba(16, 24, 40, .08);
+    --font: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+.book.color-theme-1 {           /* sepia */
+    --surface: #fdf8ea; --bg: #f3eacb; --line: #e2d6b0; --line-2: #ece2c2;
+    --ink: #3b2f1a; --ink-2: #5a4a2c; --ink-3: #8a7650; --accent-soft: #efe5c6;
+}
+.book.color-theme-2 {           /* night */
+    --surface: #1f2433; --bg: #1c1f2b; --line: #2e3446; --line-2: #272c3c;
+    --ink: #e4e8f0; --ink-2: #bcc4d2; --ink-3: #8e98aa; --accent: #5fb7d4; --accent-soft: #233544;
+}
+
+/* ---------- Base ----------
+ * Note: the theme sets html{font-size:62.5%}, so sizes here are in px, not rem. */
+
+.book, .book-header, .book-summary, .markdown-section { font-family: var(--font); }
+.book .book-body { background: var(--bg); }
+
+/* ---------- Sidebar ---------- */
+
+.book .book-summary {
+    background: var(--side);
+    color: var(--side-ink);
+    border-right: 1px solid #000;
+}
+.book .book-summary #book-search-input,
+.book .book-summary #book-search-input-link {
+    background: var(--side);
+    border-color: rgba(255, 255, 255, .06);
+    padding: 12px 12px 10px;
+}
+.book .book-summary #book-search-input input {
+    background: var(--side-2);
+    border: 1px solid #2b3647;
+    border-radius: 8px;
+    color: #e8ecf2;
+    padding: 6px 10px;
+}
+.book .book-summary #book-search-input input::placeholder { color: #7f8b9d; }
+.book .book-summary #book-search-input input:focus { border-color: var(--accent); }
+
+.book .book-summary ul.summary { padding: 4px 0 24px; }
+.book .book-summary ul.summary li a {
+    color: var(--side-ink);
+    font-size: 14px;
+    padding: 9px 18px 9px 20px;
+    border-left: 3px solid transparent;
+    transition: background .15s, color .15s;
+}
+.book .book-summary ul.summary li a:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, .05);
+    text-decoration: none;
+}
+.book .book-summary ul.summary li.active > a {
+    color: #fff;
+    background: rgba(95, 183, 212, .10);
+    border-left-color: #5fb7d4;
+    font-weight: 500;
+}
+/* First item = home: show it as the site name */
+.book .book-summary ul.summary > li:first-child > a {
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    white-space: normal;
+}
+.book .book-summary ul.summary li.divider {
+    background: rgba(255, 255, 255, .07);
+    margin: 8px 16px;
+}
+/* sidebar heading anchors (TOC of the current page) */
+.book .book-summary ul.summary li ul li a { font-size: 13px; color: #98a3b3; padding-left: 34px; }
+
+/* ---------- Top bar ---------- */
+
+.book .book-body .book-header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+    color: var(--ink-3);
+}
+.book .book-header h1 a { color: var(--ink-2); font-weight: 500; }
+.book .book-header .btn { color: var(--ink-3); }
+.book .book-header .btn:hover { color: var(--accent); }
+
+/* ---------- Content column ---------- */
+
+.book .page-inner { padding: 36px 24px 56px; }
+
+.book .markdown-section { color: var(--ink-2); line-height: 1.65; font-size: 16px; }
+.book .markdown-section > h1:first-of-type {
+    font-size: 30px;
+    line-height: 1.2;
+    letter-spacing: -.01em;
+    color: var(--ink);
+    border: 0;
+    margin: 0 0 .5em;
+}
+.book .markdown-section h2, .book .markdown-section h3 { color: var(--ink); border: 0; }
+.book .markdown-section p, .book .markdown-section li { color: var(--ink-2); }
+.book .markdown-section strong { color: var(--ink); }
+.book .markdown-section a { color: var(--accent); }
+.book .markdown-section a:hover { text-decoration: underline; }
+
+.book .markdown-section code {
+    font-family: var(--mono);
+    font-size: .85em;
+    background: var(--line-2);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: .1em .35em;
+    color: var(--ink);
+}
+
+/* Back link above the title on Watch/PROCIS record pages */
+.book .markdown-section .record-back {
+    display: inline-block;
+    margin-bottom: 14px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-3);
+    text-decoration: none;
+}
+.book .markdown-section .record-back:hover { color: var(--accent); text-decoration: none; }
+
+/* Legacy red inline headers:
+ *   <span style="font-size: 20px; ... color: red">UQ regulacija ... / KONČAR INEM ...</span>
+ *   <span style="font-size: 18px; ... color: red">Podatci: ... / Watch 001</span>
+ * Restyled here so the 90 page files don't need editing. */
+.book .markdown-section span[style*="font-size: 20px"] {
+    display: block;
+    font-family: var(--font) !important;
+    font-size: 17px !important;
+    font-weight: 600 !important;
+    color: var(--ink) !important;
+    text-align: left !important;
+    padding: 2px 0 2px 12px;
+    border-left: 4px solid var(--accent);
+    margin: 4px 0 2px;
+}
+.book .markdown-section span[style*="font-size: 18px"] {
+    display: block;
+    font-family: var(--mono) !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    color: var(--ink-3) !important;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    text-align: left !important;
+    padding-left: 16px;
+    margin: 2px 0 18px;
+}
+/* When the 18px line sits in its own paragraph (record pages), pull it up under the 20px one. */
+.book .markdown-section p > span[style*="font-size: 18px"]:only-child { margin-top: -6px; }
+
+/* ---------- Tables ---------- */
+
+.book .markdown-section .table-wrap {
+    overflow-x: auto;
+    margin: 1.2em 0 1.6em;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+.book .markdown-section table {
+    display: table;
+    width: 100%;
+    margin: 0;
+    border-collapse: collapse;
+    font-size: 14px !important;
+    font-variant-numeric: tabular-nums;
+    background: transparent;
+}
+.book .markdown-section table tr { background: transparent; border: 0; }
+.book .markdown-section table tr:nth-child(2n) { background: transparent; }
+.book .markdown-section table th,
+.book .markdown-section table td {
+    font-family: var(--font) !important;
+    border: 0;
+    border-bottom: 1px solid var(--line-2);
+    padding: 8px 14px;
+    color: var(--ink-2);
+}
+.book .markdown-section table th {
+    background: var(--line-2);
+    color: var(--ink) !important;
+    font-weight: 600;
+    font-size: 13px;
+    border-bottom: 1px solid var(--line);
+    white-space: nowrap;
+}
+.book .markdown-section table tbody tr:last-child td { border-bottom: 0; }
+.book .markdown-section table tbody tr:hover td { background: var(--accent-soft); }
+.book .markdown-section table td a { font-weight: 500; }
+/* Start/end times in the overview tables (the only centred inline-styled cells) in monospace */
+.book .markdown-section table td[style*="text-align:center"]:not(:first-child) { font-family: var(--mono) !important; font-size: 13px; }
+/* Signal legend on record pages: signal names in mono, units muted */
+.book .markdown-section table td:first-child strong { font-family: var(--mono); font-weight: 500; font-size: 13px; }
+
+/* ---------- Plot frames ---------- */
+
+/* Width and centring come from the custom block at the top of style.css
+ * (width: calc(100vw - 300px), left: 50%, translateX(-50%)); this adds a gutter
+ * and shows the frame (style.css starts it hidden for the old loader script). */
+.book .markdown-section .wide-graph {
+    visibility: visible !important;
+    width: calc(100vw - 340px) !important;
+    max-width: calc(100vw - 340px) !important;
+    margin: 28px 0 8px;
+    background: #fff;                     /* plots are drawn on white */
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+.book .markdown-section .wide-graph iframe {
+    display: block;
+    width: 100%;
+    min-height: 600px;
+    border: 0;
+}
+
+/* ---------- Home page ---------- */
+
+.book .markdown-section .home-lede {
+    font-size: 17px;
+    color: var(--ink-2);
+    max-width: 62ch;
+}
+.book .markdown-section .home-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 24px 0 32px;
+}
+.book .markdown-section a.home-card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 16px 18px 18px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-top: 4px solid var(--accent);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    color: var(--ink-2);
+    text-decoration: none;
+    transition: transform .15s, box-shadow .15s;
+}
+.book .markdown-section a.home-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 24, 40, .10);
+    text-decoration: none;
+}
+.book .markdown-section .home-card .k {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 2px 8px;
+    border-radius: 999px;
+    align-self: flex-start;
+}
+.book .markdown-section .home-card .t { font-weight: 600; font-size: 17px; color: var(--ink); }
+.book .markdown-section .home-card .d { font-size: 14px; line-height: 1.45; }
+.book .markdown-section .home-card .n { margin-top: auto; padding-top: 8px; font-size: 13px; color: var(--ink-3); }
+
+/* ---------- Prev / next arrows ---------- */
+
+.book .navigation { color: var(--ink-3); }
+.book .navigation:hover { color: var(--accent); text-decoration: none; }
+
+/* ---------- Desktop: sidebar open / closed ----------
+ * style.css gives .book-body margin-left:300px + padding-left:20px for the sidebar, which made
+ * the fixed top bar 20px too wide (share icon clipped) and left a 300px gap when the sidebar
+ * is closed with ≡. */
+@media (min-width: 1025px) {
+    .book.with-summary .book-body .book-header { width: calc(100% - 320px); }
+    .book:not(.with-summary) .book-body { margin-left: 0; max-width: 100%; padding-left: 0; }
+    .book:not(.with-summary) .book-body .book-header { width: 100%; }
+    .book:not(.with-summary) .markdown-section .wide-graph {
+        width: calc(100vw - 60px) !important;
+        max-width: calc(100vw - 60px) !important;
+    }
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 1024px) {
+    /* style.css pins the sidebar at left:0 / width:100% on narrow screens, which covered the
+     * content and the ≡ button. Hand control back to GitBook's own toggle and sizing. */
+    .book .book-summary { width: 300px !important; transition: left 250ms ease; }
+    .book:not(.with-summary) .book-summary { left: -300px !important; }
+    .book.with-summary .book-summary { left: 0 !important; }
+    /* the 20px left padding from style.css pushed the fixed top bar past the right edge */
+    .book .book-body { padding-left: 0; padding-right: 0; }
+
+    /* style.css switches the frame to 100% of the text column here */
+    .book .markdown-section .wide-graph { width: 100% !important; max-width: 100% !important; left: 0; transform: none; }
+}
+
+@media (max-width: 600px) {
+    /* GitBook's phone layout: menu is (100% - 60px) wide and slides the page aside */
+    .book .book-summary { width: calc(100% - 60px) !important; }
+    .book:not(.with-summary) .book-summary { left: -100% !important; }
+    .book .page-inner { padding: 24px 16px 48px; }
+    .book .markdown-section > h1:first-of-type { font-size: 24px; }
+    .book .markdown-section .wide-graph iframe { min-height: 420px; }
+}
