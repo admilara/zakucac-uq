@@ -4,6 +4,9 @@ author: admilara
 date: 2025-03-19
 category: UQ regulacija
 layout: post
+# Log 029 holds only auxiliary/diagnostic signals (Q1IN, Q2IN, ACKQ0OF, VAUXACTP, INVERTP);
+# its plot file is empty. Not listed in the overview table and skipped by the < > arrows.
+nav_exclude: true
 ---
 
 <span style="font-size: 20px; font-weight: bold; color: red; font-family: Helvetica; text-align: center">

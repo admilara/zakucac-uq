@@ -179,7 +179,7 @@ snimani su Watch zapisi iz sustava uzbude. Pokus na agregatu D napravljen je 05.
         </tr>
         <tr>
             <td style="text-align:center"><a href="{{ site.baseurl }}/watch-md-d/watch-zakuca1d-zakuca1d-077/">Watch 077</a></td>
-            <td style="text-align:center">15:36:14.843</td>
+            <td style="text-align:center">15:36:16.739</td>
             <td style="text-align:center">15:40:29.238</td>
         </tr>
         <tr>

@@ -23,6 +23,8 @@
         }
     </script>
 
+    {%- assign parent_section = nil -%}
+    {%- if page.dir -%}{%- assign parent_section = site.record_sections | where: "dir", page.dir | first -%}{%- endif -%}
     <nav role="navigation">
         <div id="book-search-input" role="search">
             <input type="text" placeholder="Type to search" />
@@ -37,7 +39,7 @@
             <li class="chapter" data-level="1.1" data-path="{{site.baseurl}}">
             {% endif %}
                 <a href="{{site.baseurl}}/" onclick="pageScrollToTop(this)">
-                    {{ site.title | escape }}
+                    {{ site.short_title | default: site.title | escape }}
                 </a>
                 {% if site.toc.enabled %}
                     {% if site.toc.enabled_index %}
@@ -60,7 +62,7 @@
                         {% endif %}
 
                         {% for post in reversed_posts %}
-                            {% if page.url == post.url %}
+                            {% if page.url == post.url or parent_section.parent_url == post.url %}
                             <li class="chapter active" data-level="1.2" data-path="{{site.baseurl}}{{post.url}}">
                             {% else %}
                             <li class="chapter" data-level="1.1" data-path="{{site.baseurl}}{{post.url}}">
@@ -92,7 +94,7 @@
                         {% endif %}
 
                         {% for post in reversed_posts %}
-                            {% if page.url == post.url %}
+                            {% if page.url == post.url or parent_section.parent_url == post.url %}
                             <li class="chapter active" data-level="1.2" data-path="{{site.baseurl}}{{post.url}}">
                             {% else %}
                             <li class="chapter" data-level="1.1" data-path="{{site.baseurl}}{{post.url}}">
