@@ -48,8 +48,40 @@ function wrapTables() {
     });
 }
 
+// Plot frame width = content pane width minus a 20px gutter on each side (desktop only;
+// below 1024px the CSS makes frames 100% of the text column). Driven by a ResizeObserver,
+// so it follows dragging the sidebar edge, the ≡ toggle and window resizes.
+function updateGraphWidth() {
+    const pane = document.querySelector(".book-body");
+    if (!pane) return;
+    const root = document.documentElement;
+    if (window.innerWidth > 1024) root.style.setProperty("--graph-w", Math.max(320, pane.clientWidth - 40) + "px");
+    else root.style.removeProperty("--graph-w");
+    // Keep the fixed top bar aligned with the pane's left edge (it moves when the sidebar is
+    // dragged or toggled). On phones GitBook slides the page instead; leave it to CSS there.
+    const header = pane.querySelector(".book-header");
+    if (header) {
+        if (window.innerWidth > 600) header.style.left = Math.max(0, Math.round(pane.getBoundingClientRect().left)) + "px";
+        else header.style.removeProperty("left");
+    }
+}
+
+let paneObserver = null;
+function watchPane() {
+    const pane = document.querySelector(".book-body");   // GitBook replaces it on navigation
+    if (!pane || typeof ResizeObserver === "undefined") { updateGraphWidth(); return; }
+    if (paneObserver) paneObserver.disconnect();
+    paneObserver = new ResizeObserver(function () {
+        updateGraphWidth();
+        document.querySelectorAll(".wide-graph iframe").forEach(fitIframeHeight);
+    });
+    paneObserver.observe(pane);
+    updateGraphWidth();
+}
+
 function onPage() {
     wrapTables();
+    watchPane();
     setupGraphs();
 }
 

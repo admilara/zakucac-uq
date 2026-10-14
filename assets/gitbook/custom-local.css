@@ -224,13 +224,14 @@
 
 /* ---------- Plot frames ---------- */
 
-/* Width and centring come from the custom block at the top of style.css
- * (width: calc(100vw - 300px), left: 50%, translateX(-50%)); this adds a gutter
- * and shows the frame (style.css starts it hidden for the old loader script). */
+/* Centring comes from the custom block at the top of style.css (left: 50%, translateX(-50%)).
+ * The width follows the content pane: custom-local.js sets --graph-w from the pane's real width,
+ * so it stays right when the sidebar is dragged wider/narrower or closed. The calc() is only a
+ * fallback before the script runs. style.css starts the frame hidden; show it. */
 .book .markdown-section .wide-graph {
     visibility: visible !important;
-    width: calc(100vw - 340px) !important;
-    max-width: calc(100vw - 340px) !important;
+    width: var(--graph-w, calc(100vw - 340px)) !important;
+    max-width: var(--graph-w, calc(100vw - 340px)) !important;
     margin: 28px 0 8px;
     background: #fff;                     /* plots are drawn on white */
     border: 1px solid var(--line);
@@ -294,31 +295,37 @@
 
 .book .navigation { color: var(--ink-3); }
 .book .navigation:hover { color: var(--accent); text-decoration: none; }
+/* Above 1240px GitBook shows the arrows as full-height click columns (90-150px wide) at the
+ * pane edges. With a dragged-wider sidebar they slid over the start of the text. Keep them
+ * narrow and keep the text clear of them. */
+@media (min-width: 1241px) {
+    .book .book-body .navigation { min-width: 56px; max-width: 56px; }
+    .book .page-inner { padding-left: 64px; padding-right: 64px; }
+}
 
-/* ---------- Desktop: sidebar open / closed ----------
- * style.css gives .book-body margin-left:300px + padding-left:20px for the sidebar, which made
- * the fixed top bar 20px too wide (share icon clipped) and left a 300px gap when the sidebar
- * is closed with ≡. */
-@media (min-width: 1025px) {
-    .book.with-summary .book-body .book-header { width: calc(100% - 320px); }
-    .book:not(.with-summary) .book-body { margin-left: 0; max-width: 100%; padding-left: 0; }
-    .book:not(.with-summary) .book-body .book-header { width: 100%; }
-    .book:not(.with-summary) .markdown-section .wide-graph {
-        width: calc(100vw - 60px) !important;
-        max-width: calc(100vw - 60px) !important;
-    }
+/* ---------- Sidebar and content position ----------
+ * The custom block at the top of style.css offsets the content with margin-left:300px.
+ * GitBook and its splitter plugin (the drag handle on the sidebar edge) position the content
+ * with `left` instead, and the splitter saves/restores that position ignoring the margin.
+ * After dragging the handle, every page change therefore moved the content another 300px
+ * to the left, under the sidebar. Drop the margin and let `left` do the work. */
+.book .book-body { margin-left: 0 !important; max-width: none !important; padding-left: 0; padding-right: 0; }
+/* Fixed top bar: from the content's left edge to the window edge, for any sidebar width.
+ * custom-local.js sets the exact left edge from the pane (after dragging the sidebar edge);
+ * these are the starting values. Below 600px GitBook slides the whole page, so left stays 0. */
+.book .book-body .book-header { width: auto !important; right: 0; left: 0; }
+@media (min-width: 601px) {
+    .book.with-summary .book-body .book-header { left: 300px; }
 }
 
 /* ---------- Small screens ---------- */
 
 @media (max-width: 1024px) {
     /* style.css pins the sidebar at left:0 / width:100% on narrow screens, which covered the
-     * content and the ≡ button. Hand control back to GitBook's own toggle and sizing. */
-    .book .book-summary { width: 300px !important; transition: left 250ms ease; }
-    .book:not(.with-summary) .book-summary { left: -300px !important; }
+     * content and the ≡ button. Hand control back to GitBook's toggle (and the drag handle). */
+    .book .book-summary { width: 300px; transition: left 250ms ease; }
+    .book:not(.with-summary) .book-summary { left: -100% !important; }
     .book.with-summary .book-summary { left: 0 !important; }
-    /* the 20px left padding from style.css pushed the fixed top bar past the right edge */
-    .book .book-body { padding-left: 0; padding-right: 0; }
 
     /* style.css switches the frame to 100% of the text column here */
     .book .markdown-section .wide-graph { width: 100% !important; max-width: 100% !important; left: 0; transform: none; }
